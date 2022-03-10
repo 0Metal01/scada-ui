@@ -28,89 +28,47 @@ class _StatsPageState extends State<StatsPage> {
 
     List expenses = [
       {
-        "icon": Icons.money_sharp,
-        "color": blue,
+        "header": "sirket isimleri",
         "label": "ÜRETİM DEĞERİ",
         "cost": "\$6593.75"
       },
+      {"header": "sirket isimleri", "label": "KW/H", "cost": "\2645.50"},
       {
-        "icon": Icons.electrical_services_sharp,
-        "color": red,
-        "label": "KW/H",
-        "cost": "\2645.50"
-      },
-       {
-        "icon": Icons.arrow_back,
-        "color": blue,
+        "header": "sirket isimleri",
         "label": "ÜRETİM DEĞERİ",
         "cost": "\$6593.75"
       },
+      {"header": "sirket isimleri", "label": "KW/H", "cost": "\2645.50"},
       {
-        "icon": Icons.arrow_forward,
-        "color": red,
-        "label": "KW/H",
-        "cost": "\2645.50"
-      },
-       {
-        "icon": Icons.arrow_back,
-        "color": blue,
+        "header": "sirket isimleri",
         "label": "ÜRETİM DEĞERİ",
         "cost": "\$6593.75"
       },
+      {"header": "sirket isimleri", "label": "KW/H", "cost": "\2645.50"},
       {
-        "icon": Icons.arrow_forward,
-        "color": red,
-        "label": "KW/H",
-        "cost": "\2645.50"
-      },
-       {
-        "icon": Icons.arrow_back,
-        "color": blue,
+        "header": "sirket isimleri",
         "label": "ÜRETİM DEĞERİ",
         "cost": "\$6593.75"
       },
+      {"header": "sirket isimleri", "label": "KW/H", "cost": "\2645.50"},
       {
-        "icon": Icons.arrow_forward,
-        "color": red,
-        "label": "KW/H",
-        "cost": "\2645.50"
-      },
-       {
-        "icon": Icons.arrow_back,
-        "color": blue,
+        "header": "sirket isimleri",
         "label": "ÜRETİM DEĞERİ",
         "cost": "\$6593.75"
       },
+      {"header": "sirket isimleri", "label": "KW/H", "cost": "\2645.50"},
       {
-        "icon": Icons.arrow_forward,
-        "color": red,
-        "label": "KW/H",
-        "cost": "\2645.50"
-      },
-       {
-        "icon": Icons.arrow_back,
-        "color": blue,
+        "header": "sirket isimleri",
         "label": "ÜRETİM DEĞERİ",
         "cost": "\$6593.75"
       },
+      {"header": "sirket isimleri", "label": "KW/H", "cost": "\2645.50"},
       {
-        "icon": Icons.arrow_forward,
-        "color": red,
-        "label": "KW/H",
-        "cost": "\2645.50"
-      },
-       {
-        "icon": Icons.arrow_back,
-        "color": blue,
+        "header": "sirket isimleri",
         "label": "ÜRETİM DEĞERİ",
         "cost": "\$6593.75"
       },
-      {
-        "icon": Icons.arrow_forward,
-        "color": red,
-        "label": "KW/H",
-        "cost": "\2645.50"
-      }
+      {"header": "sirket isimleri", "label": "KW/H", "cost": "\2645.50"}
     ];
     return SingleChildScrollView(
       child: Column(
@@ -154,12 +112,10 @@ class _StatsPageState extends State<StatsPage> {
                               activeDay = index;
                             });
                           },
-                          
                           child: Container(
                             width: (MediaQuery.of(context).size.width - 40) / 6,
                             child: Column(
                               children: [
-                                
                                 Text(
                                   months[index]['label'],
                                   style: TextStyle(fontSize: 10),
@@ -253,12 +209,9 @@ class _StatsPageState extends State<StatsPage> {
                     Positioned(
                       bottom: 0,
                       child: Container(
-                        width: (size.width - 20),
-                        height: 150,
-                        child: LineChart(
-                          mainData(),
-                        ),
-                      ),
+                          width: (size.width - 20),
+                          height: 150,
+                          child: ChartLine()),
                     )
                   ],
                 ),
@@ -273,7 +226,7 @@ class _StatsPageState extends State<StatsPage> {
               children: List.generate(expenses.length, (index) {
                 return Container(
                   width: (size.width - 60) / 2,
-                  height: 170,
+                  height: 190,
                   decoration: BoxDecoration(
                       color: white,
                       borderRadius: BorderRadius.circular(12),
@@ -292,18 +245,11 @@ class _StatsPageState extends State<StatsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: expenses[index]['color']),
-                          child: Center(
-                              child: Icon(
-                            expenses[index]['icon'],
-                            color: white,
-                          )),
-                        ),
+                        Center(
+                            child: Text(
+                          expenses[index]["header"],
+                          style: TextStyle(fontSize: 22),
+                        )),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -323,14 +269,17 @@ class _StatsPageState extends State<StatsPage> {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                               ),
-                            )
+                            ),
                           ],
+                        ),
+                        SizedBox(
+                          height: 10,
                         )
                       ],
                     ),
                   ),
                 );
-              }))
+              })),
         ],
       ),
     );
